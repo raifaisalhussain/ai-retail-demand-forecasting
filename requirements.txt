@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+tensorflow
+statsmodels
+pmdarima
+plotly
+dash
+dash-bootstrap-components
+flask
+pyngrok
