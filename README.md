@@ -49,18 +49,19 @@ This project compares three forecasting models — LSTM, ARIMA, and Decision Tre
 
 ## Dataset
 
-**Walmart Store Sales Forecasting** — publicly available via Kaggle.  
-The dataset (`Walmart.csv`) is included in this repository. It contains weekly sales records across multiple stores with promotional flags and temporal identifiers.
+**Walmart Store Sales Forecasting** — publicly available on Kaggle.  
+Download from: [kaggle.com/c/walmart-recruiting-store-sales-forecasting](https://www.kaggle.com/c/walmart-recruiting-store-sales-forecasting)  
+Once downloaded, place `Walmart.csv` in the root directory before running.
 
 Key variables used:
 
-| Variable     | Role             | Notes                              |
-|--------------|------------------|------------------------------------|
-| `sales`      | Target variable  | MinMax scaled to [0,1]             |
-| `promotion`  | Exogenous input  | Binary flag from `Holiday_Flag`    |
-| `month`      | Seasonality      | Engineered from `date`             |
-| `day_of_week`| Weekly pattern   | Engineered from `date`             |
-| `product_id` | Store control    | Label-encoded from `Store`         |
+| Variable      | Role            | Notes                           |
+|---------------|-----------------|---------------------------------|
+| `sales`       | Target variable | MinMax scaled to [0,1]          |
+| `promotion`   | Exogenous input | Binary flag from `Holiday_Flag` |
+| `month`       | Seasonality     | Engineered from `date`          |
+| `day_of_week` | Weekly pattern  | Engineered from `date`          |
+| `product_id`  | Store control   | Label-encoded from `Store`      |
 
 ---
 
@@ -70,7 +71,7 @@ Key variables used:
 
 1. Open [Google Colab](https://colab.research.google.com)
 2. Upload `Forecasting_Dashboard.ipynb`
-3. Upload `Walmart.csv` to `/content/Walmart.csv`
+3. Download `Walmart.csv` from Kaggle and upload to `/content/Walmart.csv`
 4. Add your ngrok token (see below)
 5. Run all cells — the public dashboard URL will print in the console
 
@@ -103,8 +104,8 @@ NGROK_AUTH_TOKEN = "your_token_here"
 ```
 ├── Forecasting_Dashboard.ipynb   # Main Colab notebook
 ├── forecasting_dashboard.py      # Standalone Python script
-├── Walmart.csv                   # Dataset
 ├── requirements.txt              # Python dependencies
+├── .gitignore                    # Excludes dataset and cache files
 └── README.md
 ```
 
@@ -129,6 +130,12 @@ NGROK_AUTH_TOKEN = "your_token_here"
 - **Decision Tree:** `max_depth=5` — balances interpretability and accuracy
 - **LSTM architecture:** 64 units → Dropout(0.2) → Dense(32) → output; Adam optimiser, early stopping (patience=5), 50 epochs, batch size 32
 - **Evaluation metrics:** MAE and RMSE on held-out test set
+
+---
+
+## License
+
+This project is open-source under the MIT License. The Walmart dataset is subject to Kaggle's terms of use and is not redistributed in this repository.
 
 ---
 
